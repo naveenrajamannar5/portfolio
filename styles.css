@@ -3,16 +3,16 @@
 :root {
     /* Color Palette */
     --color-primary: #4A90E2;    /* Professional Blue */
-    --color-secondary: #2d3436;  /* Dark Gray */
+    --color-secondary: #1a1a1a;  /* Dark Gray for layering */
     --color-accent: #34495e;     /* Accent Blue */
-    --color-text: #333333;
+    --color-text: #ffffff;       /* White text for dark background */
     --color-text-light: #ffffff;
-    --color-background: #f8f9fa;
+    --color-background: #000000; /* Pure black background */
     
     /* Glass Effects */
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -42,7 +42,7 @@ body {
     font-family: var(--font-primary);
     line-height: var(--line-height-body);
     color: var(--color-text);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: var(--color-background);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -66,32 +66,49 @@ section {
     padding: var(--section-padding);
 }
 
+/* Enhance section titles */
 .section-title {
+    color: var(--color-text-light);
     text-align: center;
     margin-bottom: var(--spacing-xl);
-    color: var(--color-text-light);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 3px;
 }
 
 /* Glass Card */
 .glass-card {
-    background: var(--glass-bg);
+    background: rgba(26, 26, 26, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Navigation */
 nav {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-content {
@@ -116,16 +133,21 @@ nav {
     transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+/* Update hover effects */
+.nav-links a:hover,
+.contact-item a:hover {
     color: var(--color-primary);
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
 }
 
 /* Hero Section */
 .hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding-top: 80px;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, var(--color-background) 100%);
 }
 
 .profile-image-container {
@@ -147,14 +169,18 @@ nav {
     transform: scale(1.02);
 }
 
+/* Experience Badge */
 .experience-badge {
+    background: rgba(26, 26, 26, 0.9);
+    color: var(--color-text-light);
+    border: 1px solid var(--glass-border);
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem 2rem;
     margin-bottom: 2rem;
-    background: rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .experience-badge .stars {
@@ -257,6 +283,7 @@ nav {
 /* Skills Section */
 .skills-container {
     text-align: center;
+    background: rgba(26, 26, 26, 0.85);
 }
 
 .skills-image {
@@ -272,11 +299,20 @@ nav {
     justify-content: center;
 }
 
+/* Update tag styles */
 .tag {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius-sm);
+    background: rgba(74, 144, 226, 0.2);
     color: var(--color-text-light);
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: rgba(74, 144, 226, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
 }
 
 /* Projects Section */
@@ -288,6 +324,13 @@ nav {
 
 .project-card {
     overflow: hidden;
+    background: rgba(26, 26, 26, 0.85);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .project-image {
@@ -303,6 +346,7 @@ nav {
 /* Recognition Section */
 .recognition-container {
     text-align: center;
+    background: rgba(26, 26, 26, 0.85);
 }
 
 .recognition-image {
@@ -315,6 +359,7 @@ nav {
     display: flex;
     gap: 2rem;
     align-items: center;
+    background: rgba(26, 26, 26, 0.85);
 }
 
 .contact-image {
@@ -344,15 +389,90 @@ nav {
     transition: color 0.3s ease;
 }
 
-.contact-item a:hover {
-    color: var(--color-primary);
+/* Button Styles */
+.cta-button {
+    background: rgba(26, 26, 26, 0.7);
+    color: var(--color-text-light);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    border: 1px solid rgba(74, 144, 226, 0.3);
+}
+
+.cta-button.secondary:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.cta-button:focus {
+    outline: none;
+}
+
+.cta-button:focus-visible {
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.4);
+}
+
+.cta-button:active {
+    transform: translateY(1px);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Button hover glow effect */
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.cta-button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: var(--spacing-lg);
+    background: rgba(26, 26, 26, 0.95);
     color: var(--color-text-light);
+    padding: var(--spacing-lg);
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+footer p {
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Design */
@@ -407,6 +527,153 @@ footer {
     animation: fadeIn 0.5s ease forwards;
 } 
 
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Experience Badge Animation */
+.experience-badge {
+    background: rgba(26, 26, 26, 0.9);
+    color: var(--color-text-light);
+    border: 1px solid var(--glass-border);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    animation: float 4s ease-in-out infinite;
+}
+
+.experience-badge .stars {
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 8s infinite linear;
+}
+
+/* Tag Animation */
+.tag {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.tag:hover::before {
+    left: 100%;
+}
+
+/* Profile Image Animation */
+.profile-image-container {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.profile-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-image-container:hover::after {
+    opacity: 1;
+}
+
+/* Section Title Animation */
+.section-title::after {
+    animation: pulse 3s infinite ease-in-out;
+}
+
+/* Glass Card Hover Effect */
+.glass-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer Animation */
+footer {
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shimmer 8s infinite linear;
+}
+
 /* Accessibility */
 :focus {
     outline: 2px solid var(--color-primary);
@@ -431,19 +698,72 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.95);
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
 }
 
+.lightbox-container {
+    position: relative;
+    width: 90%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 .lightbox-content {
-    max-width: 90%;
-    max-height: 90vh;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     border-radius: var(--border-radius-md);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    animation: lightbox-zoom 0.3s ease-out;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+    cursor: grab;
+}
+
+.lightbox-content:active {
+    cursor: grabbing;
+}
+
+.zoom-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10000;
+}
+
+.zoom-controls button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.zoom-controls button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.zoom-controls .zoom-reset {
+    font-size: 14px;
+    width: auto;
+    padding: 0 15px;
+    border-radius: 20px;
 }
 
 .close-lightbox {
@@ -455,6 +775,7 @@ footer {
     font-weight: bold;
     cursor: pointer;
     transition: color 0.3s ease;
+    z-index: 10000;
 }
 
 .close-lightbox:hover {
