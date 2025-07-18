@@ -1039,3 +1039,54 @@ footer::before {
     width: fit-content;
     margin: 0 auto var(--spacing-lg);
 } 
+
+.logo {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+}
+
+.logo-text {
+    color: var(--color-text);
+    transition: color 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.logo-highlight {
+    color: var(--color-primary);
+    position: relative;
+    padding: 0 5px;
+    background: linear-gradient(120deg, transparent 10%, rgba(74, 144, 226, 0.1) 50%, transparent 90%);
+    border-radius: 4px;
+}
+
+.logo-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), transparent);
+    transition: width 0.3s ease;
+}
+
+.logo:hover .logo-underline {
+    width: 100%;
+}
+
+.logo:hover .logo-text {
+    color: var(--color-primary);
+    text-shadow: 0 0 15px rgba(74, 144, 226, 0.3);
+}
+
+.logo:hover .logo-highlight {
+    color: var(--color-text);
+    background: linear-gradient(120deg, transparent 0%, rgba(74, 144, 226, 0.2) 50%, transparent 100%);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+} 
