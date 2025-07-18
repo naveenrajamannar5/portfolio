@@ -11,6 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Expanded view">
+    </div>
+
     <!-- Page Transition Overlay -->
     <div class="page-transition">
         <div class="transition-layer"></div>
@@ -50,7 +56,7 @@
             <div class="container">
                 <div class="hero-content glass-card slide-up">
                     <div class="profile-image-container fade-in">
-                        <img src="assets/images/hero/Brown and Cream Modern Portfolio Presentation_page-0001.jpg" alt="Deepti DP" class="profile-image-full">
+                        <img src="assets/images/hero/Brown and Cream Modern Portfolio Presentation_page-0001.jpg" alt="Deepti DP" class="profile-image-full expandable-img">
                     </div>
                     <div class="experience-badge glass-card fade-in">
                         <div class="stars">★★★★★</div>
@@ -207,6 +213,42 @@
                     toggleActions: 'play none none reverse'
                 }
             });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeLightbox = document.querySelector('.close-lightbox');
+
+        // Make all expandable images clickable
+        document.querySelectorAll('.expandable-img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function() {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = this.src;
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+            });
+        });
+
+        // Close lightbox when clicking the close button or outside the image
+        closeLightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
         });
     </script>
 </body>
