@@ -1,0 +1,52 @@
+# Portfolio Content extracted from PDF
+
+metadata:
+  last_updated: 2024-03-18
+  source: "Brown and Cream Modern Portfolio Presentation.pdf"
+
+hero_section:
+  greeting: "Hello!"
+  name: "Jayesh"
+  title: "Product Designer"
+  tagline: "Exceptional product design for your website's success."
+  experience:
+    years: 10
+    rating: 5
+    highlights:
+      - "UI/UX Specialist"
+      - "Product Strategy"
+      - "Design Systems"
+
+services:
+  - title: "UI/UX Design"
+    description: "Creating intuitive and engaging user experiences through thoughtful interface design."
+    key_features:
+      - "User Research"
+      - "Wireframing"
+      - "Prototyping"
+      - "Usability Testing"
+
+  - title: "Product Design"
+    description: "End-to-end product design solutions that solve real user problems."
+    key_features:
+      - "Product Strategy"
+      - "User Flows"
+      - "Visual Design"
+      - "Design Implementation"
+
+  - title: "Design Systems"
+    description: "Building scalable and consistent design systems for seamless product development."
+    key_features:
+      - "Component Libraries"
+      - "Style Guides"
+      - "Documentation"
+      - "Team Collaboration"
+
+# Note: This is an initial structure. We'll populate with actual content from the PDF
+# TODO: Add sections for:
+# - Projects/Case Studies
+# - Professional Experience
+# - About Me
+# - Skills & Tools
+# - Testimonials
+# - Contact Information 
